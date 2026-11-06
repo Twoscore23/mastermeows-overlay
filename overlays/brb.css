@@ -1,0 +1,20 @@
+/* Be Right Back scene: full screen, lilac dots, cream cat-ear card, music tag underneath. */
+body {
+  background:
+    radial-gradient(circle, rgba(255, 247, 239, 0.55) 0 7px, transparent 8px) 0 0 / 90px 90px,
+    radial-gradient(circle, rgba(255, 247, 239, 0.35) 0 4px, transparent 5px) 45px 45px / 90px 90px,
+    var(--lilac);
+  font-family: "Fredoka", "Segoe UI", sans-serif;
+}
+
+.card { --ear: 190px; position: absolute; left: 410px; top: 250px; width: 1100px; height: 480px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; background: var(--cream); border-radius: 70px; box-shadow: 0 22px 0 var(--purple), 0 40px 60px rgba(59, 33, 96, 0.35); }
+.card .ears { z-index: -1; }
+.title { font-weight: 700; font-size: 170px; line-height: 1; color: var(--purple); }
+.message { font-weight: 500; font-size: 56px; line-height: 1.1; color: var(--plum); }
+
+body > .tag { position: absolute; left: 660px; top: 810px; width: 600px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .card { animation: bob 4s ease-in-out infinite alternate; }
+}
+@keyframes bob { from { transform: translateY(0); } to { transform: translateY(-10px); } }
