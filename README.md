@@ -6,8 +6,13 @@ Two screens, both in the Cozy Purr look:
 
 ## 1. Put the folder on her PC
 
-Copy the `mastermeows-overlay` folder somewhere it will stay, for example `Documents\mastermeows-overlay`.
+1. On this repo's GitHub page, click the green **Code** button, then **Download ZIP**.
+2. Right-click the downloaded zip > **Extract All**.
+3. Move the extracted folder somewhere it will stay, for example `Documents\mastermeows-overlay`. You can rename it first. GitHub names it `mastermeows-overlay-main`.
+
 OBS remembers the exact location, so **don't move or rename the folder after setup**. If you do, re-pick the files in step 4.
+
+**Updating later:** download the ZIP again, and copy its `core` and `overlays` folders over the old ones. If you changed `overlays\settings.js`, keep a copy of yours and put it back afterwards. Then right-click each browser source in OBS and choose **Refresh**.
 
 ## 2. Check the OBS canvas size
 
