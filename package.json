@@ -1,0 +1,8 @@
+{
+  "name": "mastermeows-overlay",
+  "private": true,
+  "description": "OBS browser-source overlays for the Mastermeows999 Twitch channel",
+  "scripts": {
+    "test": "node --test tests/*.test.js"
+  }
+}
