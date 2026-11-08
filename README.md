@@ -43,7 +43,6 @@ Add these in this order. The last one added sits on top.
    - Bounding Box Type **Scale to outer bounds**, Bounding Box Size **432 x 243**
    - Tick **Crop to Bounding Box**
 3. **Browser**: tick **Local file**, choose `overlays\in-game.html`, width **1920**, height **1080**.
-
 4. **Browser** named "Follow alert": tick **Local file**, choose `overlays\follow-alert.html`, width **1920**, height **1080**. Tick **Control audio via OBS** so the meow shows in the Audio Mixer and its volume can be set there.
 
 ### Scene "Be Right Back"
@@ -55,6 +54,7 @@ Add these in this order. The last one added sits on top.
 - Click a scene in the **Scenes** box to switch. To switch with a key instead, set it in Settings > Hotkeys (e.g. F9 for Be Right Back).
 - The song tag appears when a YouTube video is playing and hides when it's paused.
 - Her mic stays live on the BRB screen. Mute it in the Audio Mixer if she steps away.
+- **First time:** ask a friend (or a second account) to follow. The cat should pop up within a second or two and meow. If nothing shows, check Streamer.bot is open and its WebSocket server is started (step 4), then right-click "Follow alert" > **Refresh**. Someone who unfollows and follows again won't trigger a second alert until the source is refreshed, so use a new account for each test.
 
 ## Changing things
 
