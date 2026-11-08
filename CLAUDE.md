@@ -9,12 +9,12 @@ OBS browser-source overlays for my wife's Twitch channel (Marvel Rivals). Plain 
 
 ## Architecture
 - `core/` holds plain logic with no DOM, loaded with a `<script>` tag in OBS and with `require()` in tests. Logic is test-first.
-- `overlays/` holds the thin UI: one HTML page per OBS scene at 1920x1080. Shared look in `cozy.css`, shared song tag in `music-tag.js`.
+- `overlays/` holds the thin UI: one HTML page per OBS scene at 1920x1080. Shared look in `night-glass.css`, shared song tag in `music-tag.js`.
 - Tuning numbers (positions, timings, the Tuna URL) live in `overlays/settings.js`.
 - Song data comes from the Tuna OBS plugin's local webserver (`http://localhost:1608/`).
 
 ## Design rules
-- Look: Cozy Purr (cream sticker outlines, cat ears, purple #7b4fd6). Original art only: no Marvel logos or hero art.
+- Look: Night Glass (dark tinted panels, thin cream line, purple glow, dark cat ears with a cream outline tucked behind the frame). Brand purple #7b4fd6. Original art only: no Marvel logos or hero art.
 - The webcam sits on the right, under the kill feed. The tag below it shows only the music (song on top, artist below) and hides when nothing is playing.
 
 ## Scope

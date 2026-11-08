@@ -1,8 +1,7 @@
-/* In-game scene: cat-ear webcam frame on the right, music tag underneath. */
+/* In-game scene: glass webcam frame with cat ears on the right, music tag underneath. */
 .cam { position: absolute; left: var(--cam-left); top: var(--cam-top); width: calc(var(--cam-width) + 2 * var(--cam-border)); display: flex; flex-direction: column; }
 
-/* The middle of the frame is see-through: the OBS webcam source sits underneath it. */
-.frame { position: relative; width: 100%; height: calc(var(--cam-height) + 2 * var(--cam-border)); border: var(--cam-border) solid var(--cream); border-radius: 40px; box-shadow: 0 10px 0 var(--purple), 0 18px 34px rgba(59, 33, 96, 0.55); }
-/* Ears stop at the inside edge of the frame, so they look like they grow out from behind it and never cover the webcam. */
-.frame .ears { clip-path: inset(-100px -100px calc(var(--ear) * 0.28) -100px); }
-.cam .tag { margin-top: 22px; width: 100%; }
+/* The middle of the frame is see-through: the OBS webcam source sits underneath it.
+   Ears are sized so their tips stay just under the kill feed. */
+.frame { --bw: var(--cam-border); --ear-w: 112px; --ear-h: 104px; --ear-sink: 26px; --ear-x: 8%; --ear-tilt: 10deg; position: relative; width: 100%; height: calc(var(--cam-height) + 2 * var(--cam-border)); }
+.cam .tag { margin-top: 24px; width: 100%; }

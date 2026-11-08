@@ -1,8 +1,8 @@
 # Mastermeows999 OBS overlay
 
-Two screens, both in the Cozy Purr look:
-- **In-game**: cat-ear webcam frame on the right, with the current song underneath.
-- **Be Right Back**: full-screen card, with the current song underneath.
+Two screens, both in the Night Glass look:
+- **In-game**: glowing cat-ear webcam frame on the right, with the current song underneath.
+- **Be Right Back**: full-screen night-sky card, with the current song underneath.
 
 ## 1. Put the folder on her PC
 
@@ -49,7 +49,7 @@ Add these in this order. The last one added sits on top.
 
 Edit `overlays\settings.js` in Notepad, save, then right-click the browser source > **Refresh**.
 - `brbMessage`: the line under "Be right back".
-- `camera`: where the webcam frame sits. If you move it, move the webcam source to match (left + 10, top + 10).
+- `camera`: where the webcam frame sits. If you move it, move the webcam source to match (left + border, top + border).
 - `scrollSeconds`: how fast long song titles scroll.
 
 ## Previewing without Tuna

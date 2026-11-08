@@ -9,7 +9,8 @@ window.OVERLAY_SETTINGS = {
 
   // Webcam window, in 1920x1080 canvas pixels. left/top are the frame's outer corner.
   // In OBS, place the webcam source at (left + border, top + border), sized width x height.
-  camera: { left: 1440, top: 420, width: 432, height: 243, border: 10 },
+  // The webcam hole is at (1450, 430), 432 x 243, the same as before Night Glass, so OBS doesn't need changing.
+  camera: { left: 1446, top: 426, width: 432, height: 243, border: 4 },
 
   // The line under "Be right back".
   brbMessage: "Back in a few minutes",

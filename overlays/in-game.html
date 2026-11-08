@@ -3,15 +3,21 @@
 <head>
   <meta charset="utf-8">
   <title>Mastermeows999 in-game overlay</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap">
-  <link rel="stylesheet" href="cozy.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800&display=swap">
+  <link rel="stylesheet" href="night-glass.css">
   <link rel="stylesheet" href="in-game.css">
 </head>
 <body>
   <div class="cam">
-    <div class="frame"><div class="ears"></div></div>
+    <div class="frame">
+      <div class="ears" aria-hidden="true">
+        <svg class="ear l" viewBox="0 0 100 90" preserveAspectRatio="none"><path class="o" d="M4 90 C10 60 24 24 42 7 C47 2 53 2 58 7 C76 24 90 60 96 90 Z"/><path class="i" d="M24 88 C30 66 38 44 50 28 C62 44 70 66 76 88 Z"/></svg>
+        <svg class="ear r" viewBox="0 0 100 90" preserveAspectRatio="none"><path class="o" d="M4 90 C10 60 24 24 42 7 C47 2 53 2 58 7 C76 24 90 60 96 90 Z"/><path class="i" d="M24 88 C30 66 38 44 50 28 C62 44 70 66 76 88 Z"/></svg>
+      </div>
+      <div class="face"></div>
+    </div>
     <div class="tag" id="tag" hidden>
-      <i class="note"></i>
+      <span class="meter" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
       <div class="lines">
         <span class="track t1"><span class="track-in" id="song"></span></span>
         <span class="track t2" id="artist-line"><span class="track-in" id="artist"></span></span>

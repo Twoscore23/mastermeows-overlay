@@ -1,0 +1,46 @@
+/* Night Glass shared styles: colours, cat ears and the music tag. Every scene is a 1920x1080 browser source. */
+:root {
+  --cream: #fff7ef;
+  --line: rgba(255, 247, 239, 0.92);
+  --purple: #7b4fd6;
+  --lilac: #c4a6ff;
+  --meter: #b892ff;
+  --ear-fill: #1e1035;
+  --ear-inner: rgba(196, 166, 255, 0.4);
+  --glow: rgba(150, 100, 255, 0.55);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: transparent; }
+[hidden] { display: none !important; }
+
+/* Glass box: a .face inside a positioned box draws the cream line and the glow. --bw is the line width. */
+.face { position: absolute; inset: 0; border: var(--bw) solid var(--line); border-radius: 26px; box-shadow: 0 0 0 6px rgba(123, 79, 214, 0.45), 0 0 48px var(--glow); }
+
+/* Cat ears: put .ears before the .face. They reach --ear-sink down behind the box and are cut off at the inside
+   of the cream line, so the bottom of an ear never shows and nothing is drawn inside the box (the webcam stays clear). */
+.ears { position: absolute; left: 0; right: 0; bottom: calc(100% - var(--ear-sink)); height: var(--ear-h); pointer-events: none; clip-path: inset(-400px -400px calc(var(--ear-sink) - var(--bw)) -400px); }
+.ear { position: absolute; bottom: 0; width: var(--ear-w); height: var(--ear-h); overflow: visible; transform-origin: 50% 100%; filter: drop-shadow(0 0 14px rgba(155, 109, 255, 0.7)); }
+.ear.l { left: var(--ear-x); transform: rotate(calc(-1 * var(--ear-tilt))); }
+.ear.r { right: var(--ear-x); transform: rotate(var(--ear-tilt)); }
+.ear .o { fill: var(--ear-fill); stroke: var(--line); stroke-width: var(--ear-line, 4px); stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.ear .i { fill: var(--ear-inner); }
+
+/* Music tag: song on top, artist below. Hidden when nothing is playing. */
+.tag { min-height: 84px; display: grid; grid-template-columns: 30px minmax(0, 1fr); column-gap: 18px; align-items: center; background: rgba(26, 14, 44, 0.84); color: var(--cream); border: 1.5px solid rgba(255, 247, 239, 0.35); border-radius: 16px; padding: 14px 22px; box-shadow: 0 0 0 1px rgba(123, 79, 214, 0.6), 0 0 30px rgba(123, 79, 214, 0.35), 0 10px 30px rgba(10, 4, 20, 0.5); font-family: "Nunito", "Segoe UI", sans-serif; }
+
+/* Music meter: four bars that bounce while a song plays. */
+.meter { display: flex; gap: 4px; align-items: flex-end; height: 28px; color: var(--meter); }
+.meter i { display: block; width: 5px; height: 100%; border-radius: 3px; background: currentColor; transform-origin: 50% 100%; animation: meter 1.2s ease-in-out infinite alternate; }
+.meter i:nth-child(1) { animation-delay: -0.2s; }
+.meter i:nth-child(2) { animation-delay: -0.75s; }
+.meter i:nth-child(3) { animation-delay: -0.4s; }
+.meter i:nth-child(4) { animation-delay: -1s; }
+@keyframes meter { 0% { transform: scaleY(0.25); } 50% { transform: scaleY(1); } 100% { transform: scaleY(0.45); } }
+
+.lines { display: grid; gap: 2px; min-width: 0; }
+.track { display: block; overflow: hidden; white-space: nowrap; min-width: 0; line-height: 1.2; }
+.track-in { display: inline-block; }
+.track.long .track-in { animation: marquee var(--scroll-seconds) ease-in-out infinite; }
+@keyframes marquee { 0%, 18% { transform: translateX(0); } 72%, 100% { transform: translateX(var(--shift)); } }
+.t1 { font-weight: 800; font-size: 28px; }
+.t2 { font-weight: 600; font-size: 19px; color: var(--lilac); }

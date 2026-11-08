@@ -1,16 +1,21 @@
-/* Be Right Back scene: full screen, lilac dots, cream cat-ear card, music tag underneath. */
+/* Be Right Back scene: full screen night sky, glass card with glowing cat ears, music tag underneath. */
 body {
   background:
-    radial-gradient(circle, rgba(255, 247, 239, 0.55) 0 7px, transparent 8px) 0 0 / 90px 90px,
-    radial-gradient(circle, rgba(255, 247, 239, 0.35) 0 4px, transparent 5px) 45px 45px / 90px 90px,
-    var(--lilac);
-  font-family: "Fredoka", "Segoe UI", sans-serif;
+    radial-gradient(circle 1.6px at 30px 40px, rgba(255, 247, 239, 0.8) 98%, transparent) 0 0 / 170px 150px,
+    radial-gradient(circle 1.2px at 110px 90px, rgba(196, 166, 255, 0.8) 98%, transparent) 0 0 / 230px 190px,
+    radial-gradient(ellipse 50% 60% at 50% 45%, rgba(123, 79, 214, 0.55), transparent 70%),
+    radial-gradient(ellipse 40% 40% at 10% 90%, rgba(255, 179, 209, 0.18), transparent 70%),
+    #140b24;
+  font-family: "Nunito", "Segoe UI", sans-serif;
 }
 
-.card { --ear: 190px; position: absolute; left: 410px; top: 250px; width: 1100px; height: 480px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; background: var(--cream); border-radius: 70px; box-shadow: 0 22px 0 var(--purple), 0 40px 60px rgba(59, 33, 96, 0.35); }
-.card .ears { z-index: -1; }
-.title { font-weight: 700; font-size: 170px; line-height: 1; color: var(--purple); }
-.message { font-weight: 500; font-size: 56px; line-height: 1.1; color: var(--plum); }
+.card { --bw: 4px; --ear-w: 236px; --ear-h: 220px; --ear-sink: 46px; --ear-x: 8%; --ear-tilt: 10deg; --ear-line: 5px; --ear-inner: rgba(196, 166, 255, 0.55);
+  position: absolute; left: 410px; top: 250px; width: 1100px; height: 480px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; }
+.card .face { background: rgba(40, 22, 70, 0.72); border-radius: 44px; box-shadow: 0 0 0 8px rgba(123, 79, 214, 0.35), 0 0 90px var(--glow); }
+/* A brighter glow so the dark ears stand off the dark card. */
+.card .ear { filter: drop-shadow(0 0 26px rgba(185, 140, 255, 1)) drop-shadow(0 0 6px rgba(255, 247, 239, 0.5)); }
+.title { position: relative; font-weight: 800; font-size: 128px; line-height: 1; white-space: nowrap; color: var(--cream); text-shadow: 0 0 40px rgba(155, 109, 255, 0.85); }
+.message { position: relative; font-weight: 600; font-size: 44px; line-height: 1.1; color: var(--lilac); }
 
 body > .tag { position: absolute; left: 660px; top: 810px; width: 600px; }
 
