@@ -1,17 +1,24 @@
-/* Follow alert: the cat bounces in, the name card slides out, then on the meow the cat slow-blinks and hearts float up.
-   The alert box is 760x330 canvas pixels; its corner comes from settings.js. */
-/* The alert keeps the purple-and-cream sticker card she picked (rounds 3 to 5); Night Glass dropped these two colours. */
-.alert { --plum: #3b2160; --pink: #ffb3d1; position: absolute; left: var(--alert-left); top: var(--alert-top); width: 760px; height: 330px; font-family: "Fredoka", "Segoe UI", sans-serif; }
+/* Follow alert in Night Glass: the cat bounces in, a night-sky glass card slides out with the name, then on the meow
+   the cat slow-blinks and hearts float up. The alert box is 760x330 canvas pixels; its corner comes from settings.js. */
+.alert { position: absolute; left: var(--alert-left); top: var(--alert-top); width: 760px; height: 330px; font-family: "Nunito", "Segoe UI", sans-serif; }
 
 .alert .cat { position: absolute; left: 40px; top: 40px; width: 220px; height: 238px; z-index: 3; opacity: 0; transform-origin: 50% 100%; }
-.alert .cat svg { width: 100%; height: 100%; overflow: visible; }
+.alert .cat svg { width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 0 18px rgba(155, 109, 255, 0.75)); }
 .alert .cat .head { transform-box: fill-box; transform-origin: 50% 90%; }
 .alert .cat .blink { opacity: 0; }
 
 .alert .card { position: absolute; left: 210px; top: 150px; z-index: 2; opacity: 0; max-width: 520px; display: grid; padding: 14px 30px 16px 60px;
-  background: var(--purple); color: var(--cream); border: 6px solid var(--cream); border-radius: 26px; box-shadow: 0 8px 0 var(--plum); }
-.alert .who { font-weight: 700; font-size: 48px; line-height: 1.1; white-space: nowrap; }
-.alert .line { font-weight: 600; font-size: 26px; color: var(--pink); }
+  color: var(--cream); border: 3px solid var(--line); border-radius: 22px;
+  box-shadow: 0 0 0 5px rgba(123, 79, 214, 0.45), 0 0 40px var(--glow), 0 10px 30px rgba(10, 4, 20, 0.5);
+  /* The Be Right Back night sky: two layers of small stars over a purple glow. */
+  background:
+    radial-gradient(circle 1.8px at 30px 22px, rgba(255, 247, 239, 0.95) 98%, transparent) 0 0 / 90px 60px,
+    radial-gradient(circle 1.4px at 70px 48px, rgba(196, 166, 255, 0.95) 98%, transparent) 0 0 / 120px 74px,
+    radial-gradient(circle 1.1px at 12px 40px, rgba(255, 247, 239, 0.7) 98%, transparent) 0 0 / 64px 52px,
+    radial-gradient(ellipse 70% 90% at 60% 40%, rgba(123, 79, 214, 0.6), transparent 75%),
+    #140b24; }
+.alert .who { font-weight: 800; font-size: 48px; line-height: 1.1; white-space: nowrap; text-shadow: 0 0 24px rgba(155, 109, 255, 0.9); }
+.alert .line { font-weight: 600; font-size: 26px; color: var(--lilac); }
 
 .alert .hearts { position: absolute; inset: 0; pointer-events: none; }
 .alert .heart { position: absolute; width: 30px; height: 28px; opacity: 0; background: #ff8fb8;
