@@ -14,4 +14,13 @@ window.OVERLAY_SETTINGS = {
 
   // The line under "Be right back".
   brbMessage: "Back in a few minutes",
+
+  // Follow alert. Streamer.bot's WebSocket server (Streamer.bot > Servers/Clients > WebSocket Server).
+  streamerbotUrl: "ws://127.0.0.1:8080/",
+  // left/top: the alert box's corner in 1920x1080 canvas pixels (the box is 760x330). showSeconds: time on screen.
+  followAlert: { left: 40, top: 380, showSeconds: 5 },
+  // The meow sound (take 19 on the feedback page: Freesound #412017 by skymary, CC0). Empty list = no sound.
+  meows: ["sounds/meow.mp3"],
+  // Each meow plays at a random speed in this range, so repeats sound a little different (1 = normal).
+  meowPitch: [0.93, 1.07],
 };

@@ -1,0 +1,42 @@
+/* Follow alert: the cat bounces in, the name card slides out, then on the meow the cat slow-blinks and hearts float up.
+   The alert box is 760x330 canvas pixels; its corner comes from settings.js. */
+/* The alert keeps the purple-and-cream sticker card she picked (rounds 3 to 5); Night Glass dropped these two colours. */
+.alert { --plum: #3b2160; --pink: #ffb3d1; position: absolute; left: var(--alert-left); top: var(--alert-top); width: 760px; height: 330px; font-family: "Fredoka", "Segoe UI", sans-serif; }
+
+.alert .cat { position: absolute; left: 40px; top: 40px; width: 220px; height: 238px; z-index: 3; opacity: 0; transform-origin: 50% 100%; }
+.alert .cat svg { width: 100%; height: 100%; overflow: visible; }
+.alert .cat .head { transform-box: fill-box; transform-origin: 50% 90%; }
+.alert .cat .blink { opacity: 0; }
+
+.alert .card { position: absolute; left: 210px; top: 150px; z-index: 2; opacity: 0; max-width: 520px; display: grid; padding: 14px 30px 16px 60px;
+  background: var(--purple); color: var(--cream); border: 6px solid var(--cream); border-radius: 26px; box-shadow: 0 8px 0 var(--plum); }
+.alert .who { font-weight: 700; font-size: 48px; line-height: 1.1; white-space: nowrap; }
+.alert .line { font-weight: 600; font-size: 26px; color: var(--pink); }
+
+.alert .hearts { position: absolute; inset: 0; pointer-events: none; }
+.alert .heart { position: absolute; width: 30px; height: 28px; opacity: 0; background: #ff8fb8;
+  clip-path: path("M15 27 C 6 20 0 14 0 8 C 0 3 4 0 8 0 C 11 0 13 2 15 5 C 17 2 19 0 22 0 C 26 0 30 3 30 8 C 30 14 24 20 15 27 Z"); }
+.alert .heart:nth-child(1) { left: 165px; top: 80px; }
+.alert .heart:nth-child(2) { left: 25px; top: 70px; animation-delay: .25s !important; }
+.alert .heart:nth-child(3) { left: 150px; top: 40px; animation-delay: .5s !important; }
+
+.alert.play .cat { animation: bounce .55s cubic-bezier(.3, 1.2, .5, 1) forwards; }
+.alert.play .card { animation: slide .45s .35s cubic-bezier(.3, 1.4, .5, 1) forwards; }
+.alert.meowing .eyes { animation: hide-eyes 1.4s ease-in-out; }
+.alert.meowing .blink { animation: show-blink 1.4s ease-in-out; }
+.alert.meowing .heart { animation: float-up 1.6s ease-out; }
+.alert.out { animation: leave .45s ease-in forwards; }
+
+@keyframes bounce {
+  0% { opacity: 1; transform: translateY(120px) scale(.3, .3); }
+  45% { opacity: 1; transform: translateY(-24px) scale(.9, 1.15); }
+  70% { opacity: 1; transform: translateY(0) scale(1.12, .88); }
+  100% { opacity: 1; transform: none; } }
+@keyframes slide { from { opacity: 0; transform: translateX(-140px) scale(.9); } to { opacity: 1; transform: none; } }
+@keyframes hide-eyes { 0%, 12% { opacity: 1; } 18%, 82% { opacity: 0; } 88%, 100% { opacity: 1; } }
+@keyframes show-blink { 0%, 12% { opacity: 0; } 18%, 82% { opacity: 1; } 88%, 100% { opacity: 0; } }
+@keyframes float-up {
+  0% { opacity: 0; transform: translateY(0) scale(.5); }
+  20% { opacity: 1; transform: translateY(-20px) scale(1); }
+  100% { opacity: 0; transform: translateY(-80px) scale(.9) rotate(12deg); } }
+@keyframes leave { to { opacity: 0; transform: translateY(40px); } }

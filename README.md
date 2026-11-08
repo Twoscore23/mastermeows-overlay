@@ -1,8 +1,9 @@
 # Mastermeows999 OBS overlay
 
-Two screens, both in the Night Glass look:
+Two screens in the Night Glass look, plus a follow alert:
 - **In-game**: glowing cat-ear webcam frame on the right, with the current song underneath.
 - **Be Right Back**: full-screen night-sky card, with the current song underneath.
+- **Follow alert**: when someone follows, a tuxedo cat bounces in with their name, "Just became a cat!", and meows.
 
 ## 1. Put the folder on her PC
 
@@ -25,7 +26,14 @@ Settings > Video > **Base (Canvas) Resolution: 1920x1080**. The overlays are dra
 3. Tick **Host/receive information on local webserver** and leave the port at **1608**.
 4. Play a YouTube video. Tuna should show its title. If it doesn't, the song tag won't appear yet, but everything else still works.
 
-## 4. Build the scenes
+## 4. Install Streamer.bot (shows follow alerts)
+
+1. Download Streamer.bot from https://streamer.bot, unzip it somewhere it will stay (e.g. `Documents\Streamer.bot`), and run `Streamer.bot.exe`.
+2. **Platforms > Twitch > Accounts**: connect her **Broadcaster** account and allow the permissions it asks for.
+3. **Servers/Clients > WebSocket Server**: tick **Auto Start**, leave the address `127.0.0.1`, port `8080` and endpoint `/`, then click **Start Server**.
+4. Leave Streamer.bot running while streaming. It can start minimised with Windows (Settings > General).
+
+## 5. Build the scenes
 
 ### Scene "Marvel Rivals"
 Add these in this order. The last one added sits on top.
@@ -36,10 +44,13 @@ Add these in this order. The last one added sits on top.
    - Tick **Crop to Bounding Box**
 3. **Browser**: tick **Local file**, choose `overlays\in-game.html`, width **1920**, height **1080**.
 
+4. **Browser** named "Follow alert": tick **Local file**, choose `overlays\follow-alert.html`, width **1920**, height **1080**. Tick **Control audio via OBS** so the meow shows in the Audio Mixer and its volume can be set there.
+
 ### Scene "Be Right Back"
 1. **Browser**: tick **Local file**, choose `overlays\brb.html`, width **1920**, height **1080**.
+2. Add the follow alert here too: **Add > Browser > Add Existing**, pick "Follow alert". Using the same source in both scenes means it never misses a follow while switching.
 
-## 5. Use it while streaming
+## 6. Use it while streaming
 
 - Click a scene in the **Scenes** box to switch. To switch with a key instead, set it in Settings > Hotkeys (e.g. F9 for Be Right Back).
 - The song tag appears when a YouTube video is playing and hides when it's paused.
@@ -51,7 +62,10 @@ Edit `overlays\settings.js` in Notepad, save, then right-click the browser sourc
 - `brbMessage`: the line under "Be right back".
 - `camera`: where the webcam frame sits. If you move it, move the webcam source to match (left + border, top + border).
 - `scrollSeconds`: how fast long song titles scroll.
+- `followAlert`: where the follow alert sits (`left`, `top`) and how long it stays (`showSeconds`).
+- `meows`: the meow sound. Add more files to the list and it picks one at random for each follow; empty the list for no sound.
 
 ## Previewing without Tuna
 
 Open `overlays\in-game.html?demo=long` or `overlays\brb.html?demo=short` in a browser to see sample songs.
+Open `overlays\follow-alert.html?demo=follow` to see two sample follow alerts (click the page first if the browser blocks the sound).
