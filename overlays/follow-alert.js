@@ -1,5 +1,5 @@
 // Follow alert: listens to Streamer.bot for Twitch follows and plays the tuxedo cat for each one, one at a time.
-// Add ?demo=follow to the file URL to play two sample follows without Streamer.bot.
+// Add ?demo=follow to the file URL to play two sample follows without Streamer.bot, or ?check to see what Streamer.bot sends.
 (function () {
   const S = window.OVERLAY_SETTINGS;
   const css = document.documentElement.style;
@@ -61,16 +61,36 @@
     playNext();
   }
 
+  // ?check: a text panel listing the connection and every message from Streamer.bot, for setting up on her PC.
+  // It also asks for chat messages, so typing in chat shows whether any Twitch events arrive at all.
+  const checking = new URLSearchParams(location.search).has("check");
+  let note = () => {};
+  if (checking) {
+    const panel = document.createElement("pre");
+    panel.className = "check";
+    document.body.append(panel);
+    note = text => { panel.textContent = `${new Date().toLocaleTimeString()}  ${text}\n\n` + panel.textContent; };
+    note("Check mode. Waiting for Streamer.bot...");
+  }
+
   function connect() {
     const socket = new WebSocket(S.streamerbotUrl);
-    socket.onopen = () => socket.send(JSON.stringify(FollowAlerts.subscribeRequest("follow-alert")));
+    socket.onopen = () => {
+      note(`Connected to Streamer.bot at ${S.streamerbotUrl}. Asking for follow events.`);
+      socket.send(JSON.stringify(FollowAlerts.subscribeRequest("follow-alert")));
+      if (checking) socket.send(JSON.stringify({ request: "Subscribe", id: "check-chat", events: { Twitch: ["ChatMessage"] } }));
+    };
     socket.onmessage = e => {
+      note(`Received: ${String(e.data).slice(0, 600)}`);
       let message;
       try { message = JSON.parse(e.data); } catch { return; }
       const name = FollowAlerts.followerName(message);
-      if (name) onFollower(name);
+      if (name) { note(`That's a follow from ${name}. Playing the alert.`); onFollower(name); }
     };
-    socket.onclose = () => setTimeout(connect, 3000); // Streamer.bot closed or not started yet: keep trying.
+    socket.onclose = () => {
+      note(`Can't reach Streamer.bot at ${S.streamerbotUrl}. Is it open, with its WebSocket server started? Trying again in 3 seconds.`);
+      setTimeout(connect, 3000); // Streamer.bot closed or not started yet: keep trying.
+    };
   }
 
   if (new URLSearchParams(location.search).get("demo") === "follow") {

@@ -65,6 +65,17 @@ Edit `overlays\settings.js` in Notepad, save, then right-click the browser sourc
 - `followAlert`: where the follow alert sits (`left`, `top`) and how long it stays (`showSeconds`).
 - `meows`: the meow sound. Add more files to the list and it picks one at random for each follow; empty the list for no sound.
 
+## If the follow alert doesn't show
+
+1. Open Chrome or Edge, drag `overlays\follow-alert.html` into it, add `?check` to the end of the address (so it ends `follow-alert.html?check`) and press Enter. A panel on the right lists what the alert hears from Streamer.bot, newest at the top.
+2. Type something in her Twitch chat, then follow from an account that has never followed her.
+3. Read the panel:
+   - **"Can't reach Streamer.bot"**: Streamer.bot isn't open, or its WebSocket server isn't started (step 4).
+   - **Connected, but a reply says `"status": "error"`**: Streamer.bot refused the request. Send a screenshot of the panel.
+   - **No `ChatMessage` line after typing in chat**: Streamer.bot isn't connected to Twitch. Check **Platforms > Twitch > Accounts**.
+   - **Chat shows up but the follow doesn't**: Twitch isn't sending follows to Streamer.bot. Make sure her own account is connected as **Broadcaster**, not only a bot account.
+   - **"That's a follow from ..." appears**: the alert works. In OBS, right-click "Follow alert" > **Refresh**.
+
 ## Previewing without Tuna
 
 Open `overlays\in-game.html?demo=long` or `overlays\brb.html?demo=short` in a browser to see sample songs.

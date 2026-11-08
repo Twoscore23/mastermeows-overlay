@@ -47,3 +47,7 @@
   20% { opacity: 1; transform: translateY(-20px) scale(1); }
   100% { opacity: 0; transform: translateY(-80px) scale(.9) rotate(12deg); } }
 @keyframes leave { to { opacity: 0; transform: translateY(40px); } }
+
+/* ?check panel: connection status and raw messages from Streamer.bot. */
+.check { position: absolute; left: 900px; top: 20px; width: 1000px; height: 1040px; margin: 0; overflow: hidden; padding: 20px 24px;
+  background: rgba(10, 6, 20, 0.92); color: var(--cream); border-radius: 16px; font: 20px/1.4 Consolas, monospace; white-space: pre-wrap; word-break: break-all; }
