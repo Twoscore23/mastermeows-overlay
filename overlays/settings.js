@@ -12,6 +12,14 @@ window.OVERLAY_SETTINGS = {
   // The webcam hole is at (1450, 430), 432 x 243, the same as before Night Glass, so OBS doesn't need changing.
   camera: { left: 1446, top: 426, width: 432, height: 243, border: 4 },
 
+  // Portrait scene (in-game-portrait.html) on a 1080x1920 canvas. camera works like the one above; radius rounds the frame.
+  // The whole game sits in a band across the canvas (1080 x 608), gameTop pixels from the top.
+  // In OBS: webcam at (left + border, top + border) sized width x height; game at (0, gameTop) sized 1080 x 608.
+  portrait: {
+    camera: { left: 110, top: 230, width: 848, height: 477, border: 6, radius: 36 },
+    gameTop: 930,
+  },
+
   // The line under "Be right back".
   brbMessage: "Back in a few minutes",
 
