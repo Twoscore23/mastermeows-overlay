@@ -1,0 +1,28 @@
+/* In-game scene, portrait (1080x1920): webcam frame with ears up top, music tag under it, the whole game as a band
+   across the middle, night sky everywhere else. The sky has see-through holes for the webcam and game (set in JS). */
+html, body { width: 1080px; height: 1920px; }
+
+/* Same sky as brb.css. */
+.sky { position: absolute; inset: 0;
+  background:
+    radial-gradient(circle 1.6px at 30px 40px, rgba(255, 247, 239, 0.8) 98%, transparent) 0 0 / 170px 150px,
+    radial-gradient(circle 1.2px at 110px 90px, rgba(196, 166, 255, 0.8) 98%, transparent) 0 0 / 230px 190px,
+    radial-gradient(ellipse 70% 30% at 50% 22%, rgba(123, 79, 214, 0.55), transparent 70%),
+    radial-gradient(ellipse 60% 20% at 10% 95%, rgba(255, 179, 209, 0.18), transparent 70%),
+    #140b24; }
+
+/* Cream lines along the top and bottom of the game band, just outside it. */
+.edge { position: absolute; left: 0; right: 0; height: 5px; background: var(--line); box-shadow: 0 0 0 4px rgba(123, 79, 214, 0.45), 0 0 36px var(--glow); }
+.edge.top { top: calc(var(--game-top) - 5px); }
+.edge.bottom { top: calc(var(--game-top) + var(--game-height)); }
+
+.cam { position: absolute; left: var(--cam-left); top: var(--cam-top); width: calc(var(--cam-width) + 2 * var(--cam-border)); display: flex; flex-direction: column; }
+.frame { --bw: var(--cam-border); --ear-w: 180px; --ear-h: 168px; --ear-sink: 38px; --ear-x: 8%; --ear-tilt: 10deg; --ear-line: 5px; position: relative; width: 100%; height: calc(var(--cam-height) + 2 * var(--cam-border)); }
+.frame .face { border-radius: var(--cam-radius); }
+
+/* The music tag, a size up so it reads on a phone. */
+.cam .tag { margin-top: 30px; min-height: 104px; grid-template-columns: 38px minmax(0, 1fr); column-gap: 22px; padding: 18px 28px; border-radius: 20px; }
+.cam .meter { height: 34px; gap: 5px; }
+.cam .meter i { width: 6px; }
+.cam .t1 { font-size: 35px; }
+.cam .t2 { font-size: 24px; }
