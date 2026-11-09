@@ -1,0 +1,47 @@
+/* Be Right Back, portrait (1080x1920): night sky, glass card with ears up top, the tuxedo cat asleep under it,
+   music tag below. Everything sits above the bottom of the screen, where Twitch draws chat on phones. */
+html, body { width: 1080px; height: 1920px; }
+
+/* Same sky as brb.css, with the glow moved up to the card. */
+body {
+  background:
+    radial-gradient(circle 1.6px at 30px 40px, rgba(255, 247, 239, 0.8) 98%, transparent) 0 0 / 170px 150px,
+    radial-gradient(circle 1.2px at 110px 90px, rgba(196, 166, 255, 0.8) 98%, transparent) 0 0 / 230px 190px,
+    radial-gradient(ellipse 70% 30% at 50% 28%, rgba(123, 79, 214, 0.55), transparent 70%),
+    radial-gradient(ellipse 60% 20% at 10% 95%, rgba(255, 179, 209, 0.18), transparent 70%),
+    #140b24;
+  font-family: "Nunito", "Segoe UI", sans-serif;
+}
+
+/* The BRB card from brb.css, narrowed to fit a phone. */
+.card { --bw: 4px; --ear-w: 190px; --ear-h: 176px; --ear-sink: 42px; --ear-x: 8%; --ear-tilt: 10deg; --ear-line: 5px; --ear-inner: rgba(196, 166, 255, 0.55);
+  position: absolute; left: 90px; top: 330px; width: 900px; height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; }
+.card .face { background: rgba(40, 22, 70, 0.72); border-radius: 44px; box-shadow: 0 0 0 8px rgba(123, 79, 214, 0.35), 0 0 90px var(--glow); }
+.card .ear { filter: drop-shadow(0 0 26px rgba(185, 140, 255, 1)) drop-shadow(0 0 6px rgba(255, 247, 239, 0.5)); }
+.title { position: relative; font-weight: 800; font-size: 108px; line-height: 1; white-space: nowrap; color: var(--cream); text-shadow: 0 0 40px rgba(155, 109, 255, 0.85); }
+.message { position: relative; font-weight: 600; font-size: 40px; line-height: 1.1; color: var(--lilac); }
+
+/* The follow-alert cat, asleep: the slow-blink eyes stay shut. */
+.cat { position: absolute; left: 360px; top: 720px; width: 360px; height: 389px; }
+.cat svg { width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 0 18px rgba(155, 109, 255, 0.75)); }
+.cat .eyes { opacity: 0; }
+
+.zzz { position: absolute; left: 700px; top: 640px; width: 200px; height: 120px; font-weight: 900; color: var(--lilac); text-shadow: 0 0 24px rgba(155, 109, 255, 0.9); }
+.zzz span { position: absolute; line-height: 1; }
+.zzz span:nth-child(1) { left: 0; bottom: 0; font-size: 52px; }
+.zzz span:nth-child(2) { left: 50px; bottom: 40px; font-size: 72px; }
+
+/* The music tag, a size up so it reads on a phone (same sizes as in-game-portrait.css). */
+body > .tag { position: absolute; left: 210px; top: 1150px; width: 660px; min-height: 104px; grid-template-columns: 38px minmax(0, 1fr); column-gap: 22px; padding: 18px 28px; border-radius: 20px; }
+body > .tag .meter { height: 34px; gap: 5px; }
+body > .tag .meter i { width: 6px; }
+body > .tag .t1 { font-size: 35px; }
+body > .tag .t2 { font-size: 24px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .card { animation: bob 4s ease-in-out infinite alternate; }
+  .zzz span { animation: drift 3.2s ease-in-out infinite; }
+  .zzz span:nth-child(2) { animation-delay: 1.6s; }
+}
+@keyframes bob { from { transform: translateY(0); } to { transform: translateY(-10px); } }
+@keyframes drift { 0% { opacity: 0; transform: translate(0, 10px); } 30%, 70% { opacity: 1; } 100% { opacity: 0; transform: translate(14px, -26px); } }
